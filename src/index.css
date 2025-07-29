@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Dark teal background matching renewed-mindset template */
+    --background: 0 0% 100%;
+    --foreground: 200 16% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 16% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 16% 20%;
+
+    /* Green accent color from template */
+    --primary: 145 63% 42%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Light sections */
+    --secondary: 200 20% 98%;
+    --secondary-foreground: 200 16% 20%;
+
+    --muted: 200 15% 96%;
+    --muted-foreground: 200 8% 46%;
+
+    --accent: 145 40% 94%;
+    --accent-foreground: 200 16% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Portfolio specific colors - dark teal theme matching template */
+    --hero-bg: 192 47% 14%;
+    --hero-text: 0 0% 98%;
+    --green-accent: 145 63% 42%;
+    --dark-bg: 192 47% 14%;
+    --light-bg: 0 0% 100%;
+    --text-primary: 200 16% 20%;
+    --text-secondary: 200 8% 46%;
+
+    --border: 200 20% 90%;
+    --input: 200 20% 90%;
+    --ring: 145 63% 42%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 192 47% 14%;
+    --foreground: 0 0% 98%;
+
+    --card: 192 47% 16%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 192 47% 16%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 145 63% 42%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 192 30% 24%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --hero-bg: 192 47% 14%;
+    --hero-text: 0 0% 98%;
+    --green-accent: 145 63% 42%;
+    --dark-bg: 192 47% 14%;
+    --light-bg: 0 0% 100%;
+    --text-primary: 0 0% 98%;
+    --text-secondary: 200 10% 70%;
+
+    --muted: 192 35% 20%;
+    --muted-foreground: 200 10% 70%;
+
+    --accent: 192 35% 20%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 192 35% 20%;
+    --input: 192 35% 20%;
+    --ring: 145 63% 42%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom animations matching the template */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slideInUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-scale {
+    animation: fadeInScale 0.8s ease-out forwards;
+  }
+
+  /* Hover animations */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Modern gradient backgrounds */
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(var(--hero-bg)) 0%, hsl(var(--hero-bg)) 100%);
+    position: relative;
+  }
+
+  .gradient-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, hsl(var(--primary) / 0.05) 100%);
+    pointer-events: none;
+  }
+}
